@@ -3,7 +3,7 @@
 //  STM
 //
 //  Created by Smaranika Tripathy on 03/01/13.
-//  Copyright (c) 2013 Happiest Minds. All rights reserved.
+//  Copyright (c) 2013 freakApps. All rights reserved.
 //
 
 #import "MainViewController.h"

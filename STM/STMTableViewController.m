@@ -3,7 +3,7 @@
 //  STM
 //
 //  Created by Prem kumar on 26/12/12.
-//  Copyright (c) 2012 Happiest Minds. All rights reserved.
+//  Copyright (c) 2012 freakApps. All rights reserved.
 //
 
 #import "STMTableViewController.h"
@@ -13,7 +13,7 @@
 #import "AppDelegate.h"
 
 
-#define TASKNAME_ARRAY [NSArray arrayWithObjects:@"Sears Workbook", @"Clear Pending PTT Issues", @"Release PTT for HM-Testing",@"PTT Release for Sears",@"Augmented Reality",@"AR-Team Discussion",@"dsfsd" nil]
+#define TASKNAME_ARRAY [NSArray arrayWithObjects:@"Sears Workbook", @"Clear Pending PTT Issues", @"Release PTT for HM-Testing",@"PTT Release for Sears",@"Augmented Reality",@"AR-Team Discussion",@"dsfsd", nil]
 
 #define	SECTION_TITLE_ARRAY	[NSArray arrayWithObjects:@"11/12/2012",@"12/12/2012",@"13/12/2012", @"14/12/2012", @"15/12/2012", @"16/12/2012", @"2006-2010",@"dfads",@"2006-2010",@"dfads",@"2006-2010",@"dfads",@"2006-2010",@"dfads",@"2006-2010",@"dfads",@"2006-2010",@"dfads",@"2006-2010",@"dfads",@"2006-2010",@"dfads",@"2006-2010",@"dfads",@"2006-2010",@"dfads",@"2006-2010",@"dfads", nil]
 
@@ -146,7 +146,7 @@ NSIndexPath *rowToDelete;
     // Return the number of sections.
     NSLog(@"Tasks row coun = %d",[_tasks count]);
     
-    return [SECTION_TITLE_ARRAY count];
+    return [TASKNAME_ARRAY count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -216,7 +216,6 @@ NSIndexPath *rowToDelete;
     UIImage *bgImage = nil;
     UIImage *disclosureImage;
     
-//    NSMutableArray *array = TASKNAME_ARRAY;
     NSDictionary *taskDictionary = [NSDictionary dictionaryWithObject:@"Prem" forKey:@"taskName"];
     
     NSDictionary *task = taskDictionary;
@@ -300,8 +299,6 @@ NSIndexPath *rowToDelete;
         //FIXME--Check the below key value again.
         //[self.tableView reloadData];
         
-
-
     }
     @catch (NSException *exception) {
         

@@ -3,7 +3,7 @@
 //  STM
 //
 //  Created by Prem kumar on 26/12/12.
-//  Copyright (c) 2012 Happiest Minds. All rights reserved.
+//  Copyright (c) 2012 freakApps. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -21,10 +21,7 @@
 #import "STMAdminSettingsViewController.h"
 #import "MainViewController.h"
 
-#define TENANT  @"http://happiestminds.dev.kidozen.com"
-#define APP  @"stm"
-#define USER  @"hm@kidozen.com"
-#define PASS  @"pass"
+
 
 @implementation AppDelegate
 
