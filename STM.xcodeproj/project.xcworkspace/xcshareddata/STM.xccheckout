@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5CEE5851-D0B7-47B9-9D52-CD9B55DCDF03</string>
+	<key>IDESourceControlProjectName</key>
+	<string>STM</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DD9B9B7A-649F-4BFF-A8E1-C5CAB16B597F</key>
+		<string>https://svn.happiestminds.com/svn/its_mobility-applications</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>STM/STM/STM.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DD9B9B7A-649F-4BFF-A8E1-C5CAB16B597F</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>DD9B9B7A-649F-4BFF-A8E1-C5CAB16B597F</key>
+		<string>https://svn.happiestminds.com/svn/its_mobility-applications</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://svn.happiestminds.com/svn/its_mobility-applications/STM/STM/STM.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DD9B9B7A-649F-4BFF-A8E1-C5CAB16B597F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DD9B9B7A-649F-4BFF-A8E1-C5CAB16B597F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SVN-its_mobility_applications</string>
+		</dict>
+	</array>
+</dict>
+</plist>
