@@ -216,12 +216,26 @@ NSIndexPath *rowToDelete;
     UIImage *bgImage = nil;
     UIImage *disclosureImage;
     
-    NSDictionary *taskDictionary = [NSDictionary dictionaryWithObject:@"Prem" forKey:@"taskName"];
+    NSDictionary *taskDictionary = [NSDictionary dictionaryWithObject:@"WorkBook Completion" forKey:@"taskName"];
     
     NSDictionary *task = taskDictionary;
 
-    NSString* statusString = @"Completed";
+    NSString* statusString;
     
+    if (indexPath.section == 0 || indexPath.section == 4) {
+        
+        statusString = @"Completed";
+
+    }
+    else if (indexPath.section == 1||indexPath.section == 5){
+        statusString = @"Pending";
+
+    }
+    else{
+        statusString = @"New";
+    }
+
+
     UIImage *badgeImage = nil;
     
     

@@ -16,8 +16,6 @@
 
 @interface STMAddViewController (){
     
-    KZStorage * _tasksStorage;
-
 }
 
 @property(nonatomic,retain) UIBarButtonItem *barButtonDone;
@@ -69,9 +67,7 @@
 {
 //Return the cell details.
     
-    if (!_tasksStorage) {
-        _tasksStorage = [[taskApplicationDelegate kidozenApplication] StorageWithName:@"samplePrem"];
-    }
+
 
     AppDelegate *del=(AppDelegate *)[UIApplication sharedApplication].delegate;
     NSLog(@"Logging the Dictionary :%@ ",del.addDict);
@@ -79,9 +75,6 @@
     
     if (([del.addDict objectForKey:@"taskName"]!= NULL) && ([del.addDict objectForKey:@"startDate"]!= NULL) )
     {
-        [_tasksStorage create:del.addDict completion:^(KZResponse * kr) {
-            NSAssert(!kr.error, @"error must be null");
-        }];
         [self dismissViewControllerAnimated:YES completion:NULL];
     }
     else

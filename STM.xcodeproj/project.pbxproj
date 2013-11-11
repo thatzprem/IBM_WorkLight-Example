@@ -666,6 +666,11 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Happiest Minds";
+				TargetAttributes = {
+					3B52F736168AE8BB00B03B0C = {
+						DevelopmentTeam = MQ5WDZ5WWU;
+					};
+				};
 			};
 			buildConfigurationList = 3B52F731168AE8BB00B03B0C /* Build configuration list for PBXProject "STM" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -856,7 +861,7 @@
 		3B52F76A168AE8BB00B03B0C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Venkatesh P (Z94UR4AC37)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Venkatesh P (Z94UR4AC37)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "STM/STM-Prefix.pch";
@@ -879,8 +884,8 @@
 		3B52F76B168AE8BB00B03B0C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Venkatesh P (Z94UR4AC37)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Venkatesh P (Z94UR4AC37)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Prem Kumar (MQ5WDZ5WWU)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "STM/STM-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/\"";
