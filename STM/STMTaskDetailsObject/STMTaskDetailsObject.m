@@ -12,7 +12,7 @@
 
 static STMTaskDetailsObject *sharedInstance = nil;
 
-@synthesize taskName,taskDesc,startDate,endDate,owner,dependencies,progress,completed;
+@synthesize taskName,taskDesc,startDate,endDate,owner,dependencies,progress,status;
 
 
 - (void)initializeSharedInstance
@@ -24,7 +24,7 @@ static STMTaskDetailsObject *sharedInstance = nil;
     self.owner = [[NSString alloc]init];
     self.dependencies = [[NSString alloc]init];
     self.progress = [[NSString alloc]init];
-    self.completed = FALSE;
+    self.status = [[NSString alloc] init];
     
 }
 

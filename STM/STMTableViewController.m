@@ -11,6 +11,7 @@
 #import "STMDetailsViewController.h"
 #import "STMTaskTableViewCell.h"
 #import "AppDelegate.h"
+#import "STMTaskDetailsObject.h"
 
 
 #define TASKNAME_ARRAY [NSArray arrayWithObjects:@"Sears Workbook", @"Clear Pending PTT Issues", @"Release PTT for HM-Testing",@"PTT Release for Sears",@"Augmented Reality",@"AR-Team Discussion",@"dsfsd", nil]
@@ -92,9 +93,8 @@ NSIndexPath *rowToDelete;
 }
 
 - (void)configureView{
-
     self.tasksType = @"All";
-    
+    [self.tableView reloadData];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -106,13 +106,12 @@ NSIndexPath *rowToDelete;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.    
-    return [TASKNAME_ARRAY count];
+    AppDelegate *appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
+    return [appDelegate.tasksObjectsArray count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     numberOfRows = 1;
     return 1;
 }
@@ -141,38 +140,32 @@ NSIndexPath *rowToDelete;
 
 - (void)modifyCell:(STMTaskTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    NSMutableDictionary *returnedImagesArray;
     
-    //Fetch the details from the server.
-    //Convert it to dictionary.
-    //Update the UI.
-    
-    //Assigning corresponding cell bgimage, badgeImage, disclosureImage for every cell.
-    NSMutableDictionary *returnedImagesArray = [self getImageForStatus:@"Completed" Row:indexPath.row];
-    
+    NSLog(@"indexPath.section = %d", indexPath.section);
+    AppDelegate *appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    if (appDelegate.tasksObjectsArray) {
+
+        STMTaskDetailsObject *taskObject = (STMTaskDetailsObject*)[appDelegate.tasksObjectsArray objectAtIndex:indexPath.section];
+        cell.labelName.text = taskObject.taskName;
+        cell.labelTotalAmount.text = taskObject.taskDesc;
+        cell.labelAmountPaidYet.text = taskObject.progress;
+        cell.labelNextDueDate.text = taskObject.startDate;
+
+        returnedImagesArray = [self getImageForStatus:taskObject.status Row:indexPath.row];
+    }
+
     if (returnedImagesArray) {
         cell.imageViewBackground.image = [returnedImagesArray objectForKey:@"bgImage"];
         cell.imageViewDisclosure.image = [returnedImagesArray objectForKey:@"disclosureImage"];
         
         UIImage *badgeImage = [returnedImagesArray objectForKey:@"badgeImage"];
         cell.imageViewPaidStatus.image = badgeImage;
-        cell.imageViewPaidStatus.frame = CGRectMake( (315.0 - badgeImage.size.width), 0.0, badgeImage.size.width, badgeImage.size.height);
+        cell.imageViewPaidStatus.frame = CGRectMake((320.0 - badgeImage.size.width), 0.0, badgeImage.size.width, badgeImage.size.height);
     }
     
-    NSDictionary *task = [NSDictionary dictionaryWithObject:@"WorkBook Completion" forKey:@"taskName"];
-    
-    @try {
-        cell.labelName.text = [task objectForKey:@"taskName"];
-        cell.labelTotalAmount.text = [task objectForKey:@"taskDesc"];
-        cell.labelAmountPaidYet.text = [task objectForKey:@"progress"];
-        cell.labelNextDueDate.text = [task objectForKey:@"endDate"];
-        cell.labelTotalAmount.text = [task objectForKey:@"description"];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",[exception description]);
-    }
-    @finally {
-                
-    }
 }
 
 -(NSMutableDictionary *)getImageForStatus:(NSString*)statusString Row:(int)row{
@@ -335,9 +328,14 @@ NSIndexPath *rowToDelete;
 {
     // Navigation logic may go here. Create and push another view controller.
     
-    NSDictionary *task = nil;
     
-    STMDetailsViewController *detailViewController = [[STMDetailsViewController alloc] initWithNibName:@"STMDetailsViewController" bundle:nil dictionary:task];
+    AppDelegate *appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSLog(@"%@",[appDelegate.tasksObjectsArray objectAtIndex:indexPath.row]);
+    
+
+    
+    STMDetailsViewController *detailViewController = [[STMDetailsViewController alloc] initWithNibName:@"STMDetailsViewController" bundle:nil dictionary:[appDelegate.tasksObjectsArray objectAtIndex:indexPath.row]];
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];

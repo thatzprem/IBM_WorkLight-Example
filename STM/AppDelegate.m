@@ -25,14 +25,15 @@
 
 @implementation AppDelegate
 
-@synthesize isAdmin,addDict,mDeviceToken;
+@synthesize isAdmin,tasksObjectsArray,mDeviceToken,addDict;
 @synthesize settingsDict;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    addDict=[[NSMutableDictionary alloc]initWithCapacity:1];
+    tasksObjectsArray=[[NSMutableArray alloc]init];
     settingsDict=[[NSMutableDictionary alloc]initWithCapacity:1];
+    addDict=[[NSMutableDictionary alloc]initWithCapacity:1];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

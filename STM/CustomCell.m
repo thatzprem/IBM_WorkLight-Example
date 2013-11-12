@@ -219,31 +219,30 @@
 }
 #pragma mark -
 
--(void)assignDataToValues:(NSDictionary *)taskDict forIndexPath:(NSIndexPath *)indexpath{
+-(void)assignDataToValues:(STMTaskDetailsObject *)taskDict forIndexPath:(NSIndexPath *)indexpath{
     
     if (indexpath.section==0) {
         switch (indexpath.row) {
             case 0:
-                customTextField.text=[taskDict objectForKey:@"taskName"];
+                customTextField.text= taskDict.taskName;
                 break;
             case 1:
-                customTextField.text=[taskDict objectForKey:@"startDate"];
+                customTextField.text=taskDict.startDate;
                 break;
             case 2:
-                customTextField.text=[taskDict objectForKey:@"endDate"];
+                customTextField.text=taskDict.endDate;
                 break;
             case 3:
-                customTextField.text=[taskDict objectForKey:@"owner"];
+                customTextField.text=taskDict.owner;
                 break;
             case 4:
-                customTextField.text=[taskDict objectForKey:@"dependencies"];
+                customTextField.text=taskDict.dependencies;
                 break;
             case 5:
-                customTextField.text=[taskDict objectForKey:@"progress"];
+                customTextField.text=taskDict.progress;
                 break;
             case 6:
-                NSLog(@"%@",[taskDict objectForKey:@"status"]);
-                customTextField.text=[taskDict objectForKey:@"status"];
+                customTextField.text=taskDict.status;
                 break;
             default:
                 break;
@@ -252,7 +251,7 @@
     else if(indexpath.section==1){
         
         if (descriptionView) {
-            descriptionView.text=[taskDict objectForKey:@"description"];
+            descriptionView.text= taskDict.taskDesc;
         }
     }
 }

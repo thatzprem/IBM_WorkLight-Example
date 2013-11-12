@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "STMTaskDetailsObject.h"
+
 
 @interface CustomCell : UITableViewCell<UITextFieldDelegate,UIActionSheetDelegate,UITextViewDelegate>{
     UILabel *captionLabel;
@@ -14,6 +16,6 @@
     UITextView *descriptionView;
 }
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier indexPath:(NSIndexPath *)indexPath;
--(void)assignDataToValues:(NSDictionary *)taskDict forIndexPath:(NSIndexPath *)indexpath;
+-(void)assignDataToValues:(STMTaskDetailsObject *)taskDict forIndexPath:(NSIndexPath *)indexpath;
 
 @end

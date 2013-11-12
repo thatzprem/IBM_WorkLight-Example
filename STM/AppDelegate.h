@@ -11,8 +11,10 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) NSMutableDictionary *addDict;
+@property (strong, nonatomic) NSMutableArray *tasksObjectsArray;
 @property (strong, nonatomic) NSMutableDictionary *settingsDict;
+@property (strong, nonatomic) NSMutableDictionary *addDict;
+
 
 @property (readwrite) BOOL isAdmin;
 @property(strong,nonatomic)NSString * mDeviceToken;

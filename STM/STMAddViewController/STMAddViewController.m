@@ -58,29 +58,31 @@
 }
 -(void)buttonActionCancel:(id)sender{
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
 -(void)buttonActionDone:(id)sender
 {
 //Return the cell details.
+
+    AppDelegate *appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
     
 
-
-    AppDelegate *del=(AppDelegate *)[UIApplication sharedApplication].delegate;
-    NSLog(@"Logging the Dictionary :%@ ",del.addDict);
-    //[del.addDict setObject:@"09/01/2013" forKey:@"createDate"];
+    NSLog(@"%@",appDelegate.addDict);
     
-    if (([del.addDict objectForKey:@"taskName"]!= NULL) && ([del.addDict objectForKey:@"startDate"]!= NULL) )
-    {
-        [self dismissViewControllerAnimated:YES completion:NULL];
-    }
-    else
-    {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Info" message:@"TaskName and StartDate are mandatory to create task." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [alert show];
-    }
+    STMTaskDetailsObject *taskObject = [[STMTaskDetailsObject alloc] init];
+    taskObject.taskName = [appDelegate.addDict objectForKey:@"taskName"];
+    taskObject.taskDesc = [appDelegate.addDict objectForKey:@"description"];
+    taskObject.startDate = [appDelegate.addDict objectForKey:@"startDate"];
+    taskObject.endDate = [appDelegate.addDict objectForKey:@"endDate"];
+    taskObject.owner = [appDelegate.addDict objectForKey:@"owner"];
+    taskObject.dependencies = [appDelegate.addDict objectForKey:@"dependencies"];
+    taskObject.progress = [appDelegate.addDict objectForKey:@"progress"];
+    taskObject.status = [appDelegate.addDict objectForKey:@"status"];
+    
+    [appDelegate.tasksObjectsArray addObject:taskObject];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

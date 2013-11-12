@@ -15,7 +15,7 @@
 
 @property(nonatomic,retain) UIBarButtonItem *barButtonEdit;
 @property(nonatomic,retain) UIBarButtonItem *barButtonDone;
-@property(nonatomic,retain) NSDictionary *localDictionary;
+@property(nonatomic,retain) STMTaskDetailsObject *localDictionary;
 
 
 -(void)buttonActionDone:(id)sender;
@@ -45,7 +45,7 @@
     return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil dictionary:(NSDictionary*)localDictionary
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil dictionary:(STMTaskDetailsObject*)localDictionary
 {
     
     self.localDictionary = localDictionary;
@@ -69,7 +69,7 @@
     //Changing request for approval button.
     if (appDelegate.isAdmin) {
         
-        if ([[self.localDictionary objectForKey:@"status"] isEqualToString:@"WaitingApproval"])  {
+        if ([self.localDictionary.status isEqualToString:@"WaitingApproval"])  {
             
             UIBarButtonItem *barButtonApprove = [[UIBarButtonItem alloc] initWithTitle:@"Approve" style:UIBarButtonItemStyleBordered target:self action:@selector(buttonActionApprove:)];
             self.navigationItem.rightBarButtonItem = barButtonApprove;
@@ -88,7 +88,7 @@
     NSMutableDictionary *updatedTask = [NSMutableDictionary dictionaryWithDictionary:self.localDictionary];
     [updatedTask setObject:@"Pending" forKey:@"status"];
     
-    NSString *taskId = [self.localDictionary objectForKey:@"_id"];
+//    NSString *taskId = [self.localDictionary objectForKey:@"_id"];
     
     self.localDictionary = updatedTask;
     
@@ -108,12 +108,12 @@
     
     AppDelegate *del=(AppDelegate *)[[UIApplication sharedApplication]delegate];
    
-    for (NSString * key in del.addDict) {
-        [updatedTask setObject:[del.addDict objectForKey:key] forKey:key];
-    }
+//    for (NSString * key in del.addDict) {
+////        [updatedTask setObject:[del.addDict objectForKey:key] forKey:key];
+//    }
     
-    NSString *taskId = [self.localDictionary objectForKey:@"_id"];
-    self.localDictionary=updatedTask;    
+//    NSString *taskId = [self.localDictionary objectForKey:@"_id"];
+    self.localDictionary=updatedTask;
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -19,7 +19,7 @@
 @property (nonatomic,strong)NSString *owner;
 @property (nonatomic,strong)NSString *dependencies;
 @property (nonatomic,strong)NSString *progress;
-@property (nonatomic,readwrite)BOOL *completed;
+@property (nonatomic,readwrite)NSString *status;
 
 
 + (STMTaskDetailsObject *)sharedInstance;
