@@ -11,9 +11,9 @@
 @interface STMTableViewController : UITableViewController<UIAlertViewDelegate>
 {
     
-UIBarButtonItem             *__barButtonAdd;
-UIBarButtonItem             *__barButtonEdit;
-UIBarButtonItem             *__barButtonDone;
+    UIBarButtonItem             *__barButtonAdd;
+    UIBarButtonItem             *__barButtonEdit;
+    UIBarButtonItem             *__barButtonDone;
     
 }
 @end

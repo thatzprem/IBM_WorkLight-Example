@@ -55,7 +55,6 @@
     NSString * ldeviceToken =(NSString *)deviceToken;
 	NSLog(@"My token is: %@", ldeviceToken);
     ldeviceToken  = @"d74b727499c282c7e955487360e3155209e724e2f7198808e03b4885cc5c9bc0";
-
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error

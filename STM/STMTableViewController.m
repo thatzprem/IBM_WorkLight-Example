@@ -20,7 +20,7 @@
 
 
 @interface STMTableViewController (){
-        NSMutableArray * _tasks;
+
 }
 @property (strong, nonatomic) id tasksType;
 @property (strong, nonatomic) NSMutableArray *sectionHeaderArray;
@@ -87,7 +87,6 @@ NSIndexPath *rowToDelete;
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 -(void)viewWillAppear:(BOOL)animated{
-    _tasks=nil;
     [self configureView];
     
 }
@@ -107,9 +106,7 @@ NSIndexPath *rowToDelete;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    NSLog(@"Tasks row coun = %d",[_tasks count]);
-    
+    // Return the number of sections.    
     return [TASKNAME_ARRAY count];
 }
 
@@ -125,37 +122,6 @@ NSIndexPath *rowToDelete;
  	return [SECTION_TITLE_ARRAY objectAtIndex:section];
 
 }
-
-//Below delegate COMMENTED to be used later.
-
-//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 10)];
-//    if (section == 0){
-//        
-//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 3, tableView.bounds.size.width - 10, 18)];
-//        label.text = @"Section Header Text Here";
-//        label.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.75];
-//        label.backgroundColor = [UIColor clearColor];
-//        
-//        
-//        UIImageView *headerImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HomeHeaderImage.png"]];
-//        
-//        headerImage.frame = CGRectMake(0, 0, tableView.bounds.size.width, 30);
-//        
-//        [headerImage addSubview:label];
-//
-//        [headerView addSubview:headerImage];
-//
-//        
-//        [headerView setBackgroundColor:[UIColor blackColor]];
-//
-//    }
-//    else
-//        [headerView setBackgroundColor:[UIColor blackColor]];
-//    return headerView;
-//}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -176,33 +142,45 @@ NSIndexPath *rowToDelete;
 - (void)modifyCell:(STMTaskTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    //Fetch the details from the server.
+    //Convert it to dictionary.
+    //Update the UI.
     
+    //Assigning corresponding cell bgimage, badgeImage, disclosureImage for every cell.
+    NSMutableDictionary *returnedImagesArray = [self getImageForStatus:@"Completed" Row:indexPath.row];
+    
+    if (returnedImagesArray) {
+        cell.imageViewBackground.image = [returnedImagesArray objectForKey:@"bgImage"];
+        cell.imageViewPaidStatus.image = [returnedImagesArray objectForKey:@"disclosureImage"];
+
+        UIImage *badgeImage = [returnedImagesArray objectForKey:@"badgeImage"];
+        cell.imageViewDisclosure.image = badgeImage;
+        cell.imageViewPaidStatus.frame = CGRectMake( (315.0 - badgeImage.size.width), 0.0, badgeImage.size.width, badgeImage.size.height);
+    }
+    
+    NSDictionary *task = [NSDictionary dictionaryWithObject:@"WorkBook Completion" forKey:@"taskName"];
+    
+    @try {
+        cell.labelName.text = [task objectForKey:@"taskName"];
+        cell.labelTotalAmount.text = [task objectForKey:@"taskDesc"];
+        cell.labelAmountPaidYet.text = [task objectForKey:@"progress"];
+        cell.labelNextDueDate.text = [task objectForKey:@"endDate"];
+        cell.labelTotalAmount.text = [task objectForKey:@"description"];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@",[exception description]);
+    }
+    @finally {
+                
+    }
+}
+
+-(NSMutableDictionary *)getImageForStatus:(NSString*)statusString Row:(int)row{
+    
+    UIImage *badgeImage = nil;
     UIImage *bgImage = nil;
     UIImage *disclosureImage;
-    
-    NSDictionary *taskDictionary = [NSDictionary dictionaryWithObject:@"WorkBook Completion" forKey:@"taskName"];
-    
-    NSDictionary *task = taskDictionary;
 
-    NSString* statusString;
-    
-    if (indexPath.section == 0 || indexPath.section == 4) {
-        
-        statusString = @"Completed";
-
-    }
-    else if (indexPath.section == 1||indexPath.section == 5){
-        statusString = @"Pending";
-
-    }
-    else{
-        statusString = @"New";
-    }
-
-
-    UIImage *badgeImage = nil;
-    
-    
     if ([statusString isEqualToString:@"Completed"]) {
         
         disclosureImage = [UIImage imageNamed:@"table_disclosure_green.png"];
@@ -210,10 +188,10 @@ NSIndexPath *rowToDelete;
         if (numberOfRows == 1) {
             bgImage = [UIImage imageNamed:@"goal_cell_bg_green_single.png"];
             badgeImage = [UIImage imageNamed:@"goal_paid_top.png"];
-        } else if (indexPath.row == 0 ) {
+        } else if (row == 0 ) {
             bgImage = [UIImage imageNamed:@"goal_cell_bg_green_top.png"];
             badgeImage = [UIImage imageNamed:@"goal_paid_top.png"];
-        } else if (indexPath.row == (numberOfRows - 1) ) {
+        } else if (row == (numberOfRows - 1) ) {
             bgImage = [UIImage imageNamed:@"goal_cell_bg_green_bottom.png"];
             badgeImage = [UIImage imageNamed:@"goal_paid_bottom.png"];
         } else {
@@ -224,15 +202,15 @@ NSIndexPath *rowToDelete;
     else if ([statusString isEqualToString:@"Pending"]){
         
         disclosureImage = [UIImage imageNamed:@"table_disclosure_red.png"];
-
+        
         
         if (numberOfRows == 1) {
             bgImage = [UIImage imageNamed:@"goal_cell_bg_red_single.png"];
             badgeImage = [UIImage imageNamed:@"goal_overdue_top.png"];
-        } else if (indexPath.row == 0 ) {
+        } else if (row == 0 ) {
             bgImage = [UIImage imageNamed:@"goal_cell_bg_red_top.png"];
             badgeImage = [UIImage imageNamed:@"goal_overdue_top.png"];
-        } else if (indexPath.row == (numberOfRows - 1) ) {
+        } else if (row == (numberOfRows - 1) ) {
             bgImage = [UIImage imageNamed:@"goal_cell_bg_red_bottom.png"];
             badgeImage = [UIImage imageNamed:@"goal_overdue_bottom.png"];
         } else {
@@ -249,10 +227,10 @@ NSIndexPath *rowToDelete;
         if (numberOfRows == 1) {
             bgImage = [UIImage imageNamed:@"goal_cell_bg_yellow_single.png"];
             badgeImage = [UIImage imageNamed:@"goal_approval_top.png"];
-        } else if (indexPath.row == 0 ) {
+        } else if (row == 0 ) {
             bgImage = [UIImage imageNamed:@"goal_cell_bg_yellow_top.png"];
             badgeImage = [UIImage imageNamed:@"goal_approval_top.png"];
-        } else if (indexPath.row == (numberOfRows - 1) ) {
+        } else if (row == (numberOfRows - 1) ) {
             bgImage = [UIImage imageNamed:@"goal_cell_bg_yellow_bottom.png"];
             badgeImage = [UIImage imageNamed:@"goal_approval_bottom.png"];
         } else {
@@ -261,36 +239,10 @@ NSIndexPath *rowToDelete;
         }
         
     }
+    
+    NSMutableDictionary *imagesDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:bgImage,@"bgImage",badgeImage,@"badgeImage",disclosureImage,@"disclosureImage", nil];
 
-    
-    
-    @try {
-        
-        NSLog(@"%@",task);
-        
-        cell.labelName.text = [task objectForKey:@"taskName"];
-        cell.labelTotalAmount.text = [task objectForKey:@"taskDesc"];
-        cell.labelAmountPaidYet.text = [task objectForKey:@"progress"];
-        cell.labelNextDueDate.text = [task objectForKey:@"endDate"];
-        cell.labelTotalAmount.text = [task objectForKey:@"description"];
-        
-        //FIXME--Check the below key value again.
-        //[self.tableView reloadData];
-        
-    }
-    @catch (NSException *exception) {
-        
-        NSLog(@"%@",[exception description]);
-    }
-    @finally {
-                
-    }
-    
-        cell.imageViewBackground.image = bgImage;
-        cell.imageViewDisclosure.image = disclosureImage;
-        cell.imageViewPaidStatus.image = badgeImage;
-        cell.imageViewPaidStatus.frame = CGRectMake( (315.0 - badgeImage.size.width), 0.0, badgeImage.size.width, badgeImage.size.height);
-
+    return imagesDictionary;
 }
     
 
@@ -384,10 +336,8 @@ NSIndexPath *rowToDelete;
     // Navigation logic may go here. Create and push another view controller.
     
     NSDictionary *task = nil;
-
     
     STMDetailsViewController *detailViewController = [[STMDetailsViewController alloc] initWithNibName:@"STMDetailsViewController" bundle:nil dictionary:task];
-    
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
