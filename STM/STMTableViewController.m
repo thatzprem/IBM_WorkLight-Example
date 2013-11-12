@@ -151,10 +151,10 @@ NSIndexPath *rowToDelete;
     
     if (returnedImagesArray) {
         cell.imageViewBackground.image = [returnedImagesArray objectForKey:@"bgImage"];
-        cell.imageViewPaidStatus.image = [returnedImagesArray objectForKey:@"disclosureImage"];
-
+        cell.imageViewDisclosure.image = [returnedImagesArray objectForKey:@"disclosureImage"];
+        
         UIImage *badgeImage = [returnedImagesArray objectForKey:@"badgeImage"];
-        cell.imageViewDisclosure.image = badgeImage;
+        cell.imageViewPaidStatus.image = badgeImage;
         cell.imageViewPaidStatus.frame = CGRectMake( (315.0 - badgeImage.size.width), 0.0, badgeImage.size.width, badgeImage.size.height);
     }
     

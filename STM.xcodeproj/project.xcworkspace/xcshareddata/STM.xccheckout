@@ -5,27 +5,27 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>8811ED4D-28FC-468C-A6C3-A11A110D345F</string>
+	<string>54870446-805B-4680-B1AF-AF3FB32DDEF1</string>
 	<key>IDESourceControlProjectName</key>
 	<string>STM</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0012F22E-D764-4120-83B8-EA1204262B1F</key>
-		<string>https://github.com/thatzprem/STM.git</string>
+		<key>5B475A6D-AC31-4892-BE58-06A65A917E48</key>
+		<string>https://github.com/thatzprem/IBM_WorkLight-Example.git</string>
 		<key>D4CCA395-35D8-4EE7-8CB5-A4FFC8623295</key>
 		<string>https://github.com/thatzprem/ios-sample-codes.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>github/STM/STM.xcodeproj/project.xcworkspace</string>
+	<string>github/IBM_WorkLight-Example/STM.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0012F22E-D764-4120-83B8-EA1204262B1F</key>
+		<key>5B475A6D-AC31-4892-BE58-06A65A917E48</key>
 		<string>../..</string>
 		<key>D4CCA395-35D8-4EE7-8CB5-A4FFC8623295</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/thatzprem/STM.git</string>
+	<string>https://github.com/thatzprem/IBM_WorkLight-Example.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -36,17 +36,17 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>D4CCA395-35D8-4EE7-8CB5-A4FFC8623295</string>
+			<string>5B475A6D-AC31-4892-BE58-06A65A917E48</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Project-Workspace</string>
+			<string>IBM_WorkLight-Example</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0012F22E-D764-4120-83B8-EA1204262B1F</string>
+			<string>D4CCA395-35D8-4EE7-8CB5-A4FFC8623295</string>
 			<key>IDESourceControlWCCName</key>
-			<string>STM</string>
+			<string>Project-Workspace</string>
 		</dict>
 	</array>
 </dict>
