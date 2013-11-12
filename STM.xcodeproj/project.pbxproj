@@ -46,7 +46,6 @@
 		3B7172B7168F538E0035A85A /* STMManagePeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7172B5168F538E0035A85A /* STMManagePeopleViewController.m */; };
 		3B7172B8168F538E0035A85A /* STMManagePeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B7172B6168F538E0035A85A /* STMManagePeopleViewController.xib */; };
 		3B7295591695670A00337A16 /* STMTaskDetailsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7295581695670A00337A16 /* STMTaskDetailsObject.m */; };
-		3B729570169598EC00337A16 /* libkidozen.client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B72956F169598EC00337A16 /* libkidozen.client.a */; };
 		3B78613F169DB21D0074E805 /* goal_cell_bg_yellow_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B78613B169DB21D0074E805 /* goal_cell_bg_yellow_bottom.png */; };
 		3B786140169DB21D0074E805 /* goal_cell_bg_yellow_middle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B78613C169DB21D0074E805 /* goal_cell_bg_yellow_middle.png */; };
 		3B786141169DB21D0074E805 /* goal_cell_bg_yellow_single.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B78613D169DB21D0074E805 /* goal_cell_bg_yellow_single.png */; };
@@ -237,7 +236,6 @@
 				3B52F73C168AE8BB00B03B0C /* UIKit.framework in Frameworks */,
 				3B52F73E168AE8BB00B03B0C /* Foundation.framework in Frameworks */,
 				3B52F740168AE8BB00B03B0C /* CoreGraphics.framework in Frameworks */,
-				3B729570169598EC00337A16 /* libkidozen.client.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,8 +514,8 @@
 		3BF01233168AEB6F00DA1C12 /* FirstViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3BF4826D168B0475002D7A55 /* STMTaskTableViewCell */,
 				3BF01252168AFC2400DA1C12 /* STMTaskViewController */,
+				3BF4826D168B0475002D7A55 /* STMTaskTableViewCell */,
 				3BF0123E168AEE6D00DA1C12 /* STMAddViewController */,
 				3BF01238168AEBF700DA1C12 /* STMDetailsViewController */,
 			);
@@ -665,7 +663,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0450;
-				ORGANIZATIONNAME = "Happiest Minds";
+				ORGANIZATIONNAME = FreakApps;
 				TargetAttributes = {
 					3B52F736168AE8BB00B03B0C = {
 						DevelopmentTeam = MQ5WDZ5WWU;
@@ -861,8 +859,8 @@
 		3B52F76A168AE8BB00B03B0C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Venkatesh P (Z94UR4AC37)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Prem Kumar (6MT23LF92C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Prem Kumar (6MT23LF92C)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "STM/STM-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/\"";
@@ -874,8 +872,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F9E16175-4C07-4748-9AE8-CA2CC2750E40";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9E16175-4C07-4748-9AE8-CA2CC2750E40";
+				PROVISIONING_PROFILE = "F9CA3C4E-9B45-4447-ABC4-6D7C715F1557";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9CA3C4E-9B45-4447-ABC4-6D7C715F1557";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -884,8 +882,8 @@
 		3B52F76B168AE8BB00B03B0C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Prem Kumar (MQ5WDZ5WWU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Prem Kumar (6MT23LF92C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Prem Kumar (6MT23LF92C)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "STM/STM-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/\"";
@@ -897,8 +895,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F9E16175-4C07-4748-9AE8-CA2CC2750E40";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9E16175-4C07-4748-9AE8-CA2CC2750E40";
+				PROVISIONING_PROFILE = "F9CA3C4E-9B45-4447-ABC4-6D7C715F1557";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9CA3C4E-9B45-4447-ABC4-6D7C715F1557";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

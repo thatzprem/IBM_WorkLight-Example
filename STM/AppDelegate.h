@@ -7,15 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KZApplication.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-
-@property (strong, nonatomic) KZApplication * kidozenApplication;
-
 @property (strong, nonatomic) NSMutableDictionary *addDict;
 @property (strong, nonatomic) NSMutableDictionary *settingsDict;
 

@@ -37,14 +37,6 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    //Kido-Code.
-//    self.kidozenApplication = [[KZApplication alloc] initWithTennantMarketPlace:TENANT applicationName:APP andCallback:^(KZResponse * kr) {
-//        NSAssert(!kr.error, @"error must be null");
-//        [kr.application authenticateUser:USER withProvider:@"kidozen" andPassword:PASS completion:^(id kr) {
-//            NSAssert(![kr  isKindOfClass:[NSError class]], @"error must be null");
-//        }];
-//    }];
-    
     UIViewController *viewController1 = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     UINavigationController *navController1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
     
@@ -62,13 +54,7 @@
 	NSLog(@"My token is: %@", deviceToken);
     NSString * ldeviceToken =(NSString *)deviceToken;
 	NSLog(@"My token is: %@", ldeviceToken);
-//ldeviceToken=@"73c6618dd7e8b84024557f59f724228896b356cded4679bd217f4a065013766f";
-  ldeviceToken  = @"d74b727499c282c7e955487360e3155209e724e2f7198808e03b4885cc5c9bc0";
-    
-   KZNotification *notification=[[taskApplicationDelegate kidozenApplication ]pushNotifications];
-    [notification subscribeDevice:ldeviceToken toChannel:@"taskreport" completion:^(KZResponse * k) {
-        NSLog(@"Device subscribed to sports channel");
-    }];
+    ldeviceToken  = @"d74b727499c282c7e955487360e3155209e724e2f7198808e03b4885cc5c9bc0";
 
 }
 

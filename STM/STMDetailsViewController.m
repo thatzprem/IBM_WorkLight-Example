@@ -84,17 +84,12 @@
 
 -(void)buttonActionApprove:(id)sender{
     
-    KZStorage *_tasksStorage = [[taskApplicationDelegate kidozenApplication] StorageWithName:@"samplePrem"];
     
     NSMutableDictionary *updatedTask = [NSMutableDictionary dictionaryWithDictionary:self.localDictionary];
     [updatedTask setObject:@"Pending" forKey:@"status"];
     
     NSString *taskId = [self.localDictionary objectForKey:@"_id"];
     
-    [_tasksStorage updateUsingId:taskId object:updatedTask completion:^(KZResponse * k) {
-        NSAssert(!k.error, @"error must be null");
-        [self.tableView reloadData];
-    }];
     self.localDictionary = updatedTask;
     
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Task status changed to approved!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
@@ -109,7 +104,6 @@
 
 -(void)buttonActionDone:(id)sender
 {
-    KZStorage *_tasksStorage = [[taskApplicationDelegate kidozenApplication] StorageWithName:@"samplePrem"];
     NSMutableDictionary *updatedTask = [NSMutableDictionary dictionaryWithDictionary:self.localDictionary];
     
     AppDelegate *del=(AppDelegate *)[[UIApplication sharedApplication]delegate];
@@ -119,11 +113,6 @@
     }
     
     NSString *taskId = [self.localDictionary objectForKey:@"_id"];
-    [_tasksStorage updateUsingId:taskId object:updatedTask completion:^(KZResponse * k) {
-        NSAssert(!k.error, @"error must be null");
-        [self.tableView reloadData];
-        
-    }];
     self.localDictionary=updatedTask;    
     [self.navigationController popViewControllerAnimated:YES];
 }

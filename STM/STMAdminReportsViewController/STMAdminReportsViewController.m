@@ -8,11 +8,9 @@
 
 #import "STMAdminReportsViewController.h"
 #import "AppDelegate.h"
-#import "KZNotification.h"
 
 @interface STMAdminReportsViewController (){
 
-    KZNotification * notification;
 }
 
 @end

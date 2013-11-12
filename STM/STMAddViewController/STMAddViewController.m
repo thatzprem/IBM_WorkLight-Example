@@ -8,7 +8,6 @@
 
 #import "STMAddViewController.h"
 #import "STMTaskDetailsObject.h"
-#import "KZStorage.h"
 #import "CustomCell.h"
 #define		ARRAY	[NSArray arrayWithObjects:@"Sears-Workbook",@"Complete the workbook along with Biswajit",@"12/12/2012", @"31/12/2012", @"Prem kumar", @"Biswajit", @"Chris Peri", nil]
 

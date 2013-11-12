@@ -13,7 +13,6 @@
     UIBarButtonItem *barButtonEdit ;
     UIBarButtonItem *barButtonDone ;
     
-    KZStorage * _tasksStorage;
     NSMutableArray * _tasks;
     
     NSMutableDictionary *settingsDict;

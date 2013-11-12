@@ -20,12 +20,7 @@
 
 
 @interface STMTableViewController (){
-    
-    KZStorage * _tasksStorage;
-    NSMutableArray * _tasks;
-
-
-
+        NSMutableArray * _tasks;
 }
 @property (strong, nonatomic) id tasksType;
 @property (strong, nonatomic) NSMutableArray *sectionHeaderArray;
@@ -101,37 +96,6 @@ NSIndexPath *rowToDelete;
 
     self.tasksType = @"All";
     
-    if (self.tasksType) {
-        NSLog(@"task=%@",_tasks);
-        
-        if (!_tasks) {
-            _tasks = [[NSMutableArray alloc] init];
-            _tasksStorage = [[taskApplicationDelegate kidozenApplication] StorageWithName:@"samplePrem"];
-            if ([_tasksType isEqualToString:@"All"]) {
-                [_tasksStorage all:^(KZResponse * k) {
-                    _tasks = [k response];
-                    [self.tableView reloadData];
-                    
-                }];
-            }
-            else
-            {
-                NSString * completed = [_tasksType isEqualToString:@"Completed"] ? @"true" : @"false";
-                NSLog(@"completed = %@",completed);
-                
-                //NSString * queryString = [NSString stringWithFormat:@"{\"completed\":%@}", completed];
-                NSString * queryString = [NSString stringWithFormat:@"{\"status\":\"Pending\"}"];
-                [_tasksStorage query:queryString withBlock:^(KZResponse * k) {
-                    _tasks = [k response];
-                    
-                    NSLog(@"QueryString  = %@",queryString);
-                    //NSLog(@"Response = %@",_tasks);
-                    
-                    [self.tableView reloadData];
-                }];
-            }
-        }
-    }
 }
 - (void)didReceiveMemoryWarning
 {
@@ -369,22 +333,6 @@ NSIndexPath *rowToDelete;
         
     }
     else if (buttonIndex == 1){
-        
-        if (!_tasksStorage) {
-            _tasksStorage = [[taskApplicationDelegate kidozenApplication] StorageWithName:@"samplePrem"];
-        }
-        
-        NSString *taskId = [_tasks[rowToDelete.section]objectForKey:@"_id"];
-        NSLog(@"TASK-ID of the deleting row = %@",taskId);
-
-        //Delete a task in a row.
-        [_tasksStorage deleteUsingId:taskId withBlock:^(KZResponse * k) {
-            NSAssert(!k.error, @"error must be null");
-            _tasks=nil;
-            [self configureView];
-            [self.tableView reloadData];
-        }];
-        
         
     }
     
