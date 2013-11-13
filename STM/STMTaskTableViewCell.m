@@ -14,13 +14,13 @@
 
 
 @implementation STMTaskTableViewCell
-@synthesize labelName               =   __labelName;
-@synthesize labelTotalAmount        =   __labelTotalAmount;
-@synthesize labelAmountPaidYet      =   __labelAmountPaidYet;
-@synthesize labelNextDueDate        =   __labelNextDueDate;
-@synthesize imageViewBackground     =   __imageViewBackground;
-@synthesize imageViewPaidStatus     =   __imageViewPaidStatus;
-@synthesize imageViewDisclosure     =   __imageViewDisclosure;
+@synthesize labelTaskName;
+@synthesize labelTaskDesc;
+@synthesize labelTaskProgress;
+@synthesize labelTaskDueDate;
+@synthesize imageViewBackground;
+@synthesize imageViewTaskStatus;
+@synthesize imageViewDisclosure;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -42,19 +42,6 @@
 }
 
 - (void)dealloc {
-    __labelName = nil;
-    
-    __labelTotalAmount = nil;
-    
-    __labelAmountPaidYet = nil;
-    
-    __labelNextDueDate = nil;
-    
-    __imageViewBackground = nil;
-    
-    __imageViewPaidStatus = nil;
-    
-    __imageViewDisclosure = nil;
     
 }
 

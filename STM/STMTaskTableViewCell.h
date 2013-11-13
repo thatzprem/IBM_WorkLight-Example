@@ -10,22 +10,16 @@
 
 @interface STMTaskTableViewCell : UITableViewCell
 {
-    IBOutlet UILabel *__labelName;
-    IBOutlet UILabel *__labelTotalAmount;
-    IBOutlet UILabel *__labelAmountPaidYet;
-    IBOutlet UILabel *__labelNextDueDate;
     
-    IBOutlet UIImageView *__imageViewBackground;
-    IBOutlet UIImageView *__imageViewPaidStatus;
-    IBOutlet UIImageView *__imageViewDisclosure;
+
 }
-@property(nonatomic,retain) UILabel *labelName;
-@property(nonatomic,retain) UILabel *labelTotalAmount;
-@property(nonatomic,retain) UILabel *labelAmountPaidYet;
-@property(nonatomic,retain) UILabel *labelNextDueDate; 
-@property(nonatomic,retain) UIImageView *imageViewBackground;
-@property(nonatomic,retain) UIImageView *imageViewPaidStatus;
-@property(nonatomic,retain) UIImageView *imageViewDisclosure;
+@property(nonatomic,retain) IBOutlet UILabel *labelTaskName;
+@property(nonatomic,retain) IBOutlet UILabel *labelTaskDesc;
+@property(nonatomic,retain) IBOutlet UILabel *labelTaskProgress;
+@property(nonatomic,retain) IBOutlet UILabel *labelTaskDueDate;
+@property(nonatomic,retain) IBOutlet UIImageView *imageViewBackground;
+@property(nonatomic,retain) IBOutlet  UIImageView *imageViewTaskStatus;
+@property(nonatomic,retain) IBOutlet UIImageView *imageViewDisclosure;
 
 
 @end

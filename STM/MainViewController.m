@@ -53,7 +53,7 @@
     [self.HUD setDelegate:self];
     self.HUD.labelText = @"Connecting to server...";
     self.HUD.dimBackground =NO;
-    self.HUD.minShowTime=2.5f;
+    self.HUD.minShowTime = 1.0f;
     [self.HUD setHidden:NO];
     [self.HUD showWhileExecuting:@selector(downloadDataFromServer) onTarget:self withObject:nil animated:YES];
     

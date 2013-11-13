@@ -149,10 +149,10 @@ NSIndexPath *rowToDelete;
     if (appDelegate.tasksObjectsArray) {
 
         STMTaskDetailsObject *taskObject = (STMTaskDetailsObject*)[appDelegate.tasksObjectsArray objectAtIndex:indexPath.section];
-        cell.labelName.text = taskObject.taskName;
-        cell.labelTotalAmount.text = taskObject.taskDesc;
-        cell.labelAmountPaidYet.text = taskObject.progress;
-        cell.labelNextDueDate.text = taskObject.startDate;
+        cell.labelTaskName.text = taskObject.taskName;
+        cell.labelTaskDesc.text = taskObject.taskDesc;
+        cell.labelTaskProgress.text = taskObject.progress;
+        cell.labelTaskDueDate.text = taskObject.startDate;
 
         returnedImagesArray = [self getImageForStatus:taskObject.status Row:indexPath.row];
     }
@@ -162,8 +162,8 @@ NSIndexPath *rowToDelete;
         cell.imageViewDisclosure.image = [returnedImagesArray objectForKey:@"disclosureImage"];
         
         UIImage *badgeImage = [returnedImagesArray objectForKey:@"badgeImage"];
-        cell.imageViewPaidStatus.image = badgeImage;
-        cell.imageViewPaidStatus.frame = CGRectMake((320.0 - badgeImage.size.width), 0.0, badgeImage.size.width, badgeImage.size.height);
+        cell.imageViewTaskStatus.image = badgeImage;
+        cell.imageViewTaskStatus.frame = CGRectMake((320.0 - badgeImage.size.width), 0.0, badgeImage.size.width, badgeImage.size.height);
     }
     
 }
@@ -279,8 +279,13 @@ NSIndexPath *rowToDelete;
     }
     else if (buttonIndex == 1){
         
+        AppDelegate *appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
+        NSLog(@"%d",[appDelegate.tasksObjectsArray count]);
+        NSLog(@"%d",rowToDelete.row);
+        [appDelegate.tasksObjectsArray removeObjectAtIndex:rowToDelete.row];
     }
     
+    [self.tableView reloadData];
 }
 
 /*
