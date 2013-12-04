@@ -37,6 +37,8 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        AppDelegate *appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate.addDict removeAllObjects];
     }
     return self;
 }
@@ -53,8 +55,6 @@
     
     self.navigationItem.title = @"New Task";
     
-
-    
 }
 -(void)buttonActionCancel:(id)sender{
     
@@ -64,12 +64,15 @@
 
 -(void)buttonActionDone:(id)sender
 {
-//Return the cell details.
+
+    //Return the cell details.
 
     AppDelegate *appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-
-    NSLog(@"%@",appDelegate.addDict);
+    if ([appDelegate.addDict objectForKey:@"taskName"] == nil || [appDelegate.addDict objectForKey:@"startDate"] == nil) {
+        UIAlertView *addTaskIncompleteDataAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"TaskName or Start date is empty" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [addTaskIncompleteDataAlert show];
+        return;
+    }
     
     STMTaskDetailsObject *taskObject = [[STMTaskDetailsObject alloc] init];
     taskObject.taskName = [appDelegate.addDict objectForKey:@"taskName"];

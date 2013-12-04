@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "STMAddViewController.h"
+#import "STMTaskDetailsObject.h"
+
 @interface STMDetailsViewController : STMAddViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil dictionary:(NSDictionary*)localDictionary;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil dictionary:(STMTaskDetailsObject*)localDictionary indexPath:(int)indexPath;
+
 
 @end

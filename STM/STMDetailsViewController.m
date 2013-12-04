@@ -16,6 +16,7 @@
 @property(nonatomic,retain) UIBarButtonItem *barButtonEdit;
 @property(nonatomic,retain) UIBarButtonItem *barButtonDone;
 @property(nonatomic,retain) STMTaskDetailsObject *localDictionary;
+@property(nonatomic)int indexPath;
 
 
 -(void)buttonActionDone:(id)sender;
@@ -45,10 +46,11 @@
     return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil dictionary:(STMTaskDetailsObject*)localDictionary
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil dictionary:(STMTaskDetailsObject*)localDictionary indexPath:(int)indexPath{
     
     self.localDictionary = localDictionary;
+    indexPath = indexPath;
+    
     return self;
 }
 
@@ -57,13 +59,14 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"Task Details";
+    
     self.barButtonEdit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(buttonActionEdit:)];
     
     self.barButtonDone = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(buttonActionDone:)];
     
     AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
     if (!appDelegate.isAdmin) {
-        self.navigationItem.rightBarButtonItem = self.barButtonEdit;
+        self.navigationItem.rightBarButtonItem = self.barButtonDone;
     }
     
     //Changing request for approval button.
@@ -84,36 +87,41 @@
 
 -(void)buttonActionApprove:(id)sender{
     
-    
     NSMutableDictionary *updatedTask = [NSMutableDictionary dictionaryWithDictionary:self.localDictionary];
     [updatedTask setObject:@"Pending" forKey:@"status"];
-    
-//    NSString *taskId = [self.localDictionary objectForKey:@"_id"];
-    
     self.localDictionary = updatedTask;
-    
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Task status changed to approved!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     [alertView show];
-    
-
-    
     self.navigationItem.rightBarButtonItem = self.barButtonDone;
-
-
 }
 
 -(void)buttonActionDone:(id)sender
 {
-    NSMutableDictionary *updatedTask = [NSMutableDictionary dictionaryWithDictionary:self.localDictionary];
     
-    AppDelegate *del=(AppDelegate *)[[UIApplication sharedApplication]delegate];
-   
-//    for (NSString * key in del.addDict) {
-////        [updatedTask setObject:[del.addDict objectForKey:key] forKey:key];
-//    }
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-//    NSString *taskId = [self.localDictionary objectForKey:@"_id"];
-    self.localDictionary=updatedTask;
+    if ([appDelegate.addDict objectForKey:@"taskName"] == nil || [appDelegate.addDict objectForKey:@"startDate"] == nil) {
+        UIAlertView *addTaskIncompleteDataAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"TaskName or Start date is empty" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [addTaskIncompleteDataAlert show];
+        return;
+    }
+    [appDelegate.tasksObjectsArray removeObjectAtIndex:self.indexPath];
+    
+    STMTaskDetailsObject *taskObject = [[STMTaskDetailsObject alloc] init];
+    taskObject.taskName = [appDelegate.addDict objectForKey:@"taskName"];
+    taskObject.taskDesc = [appDelegate.addDict objectForKey:@"description"];
+    taskObject.startDate = [appDelegate.addDict objectForKey:@"startDate"];
+    taskObject.endDate = [appDelegate.addDict objectForKey:@"endDate"];
+    taskObject.owner = [appDelegate.addDict objectForKey:@"owner"];
+    taskObject.dependencies = [appDelegate.addDict objectForKey:@"dependencies"];
+    taskObject.progress = [appDelegate.addDict objectForKey:@"progress"];
+    taskObject.status = [appDelegate.addDict objectForKey:@"status"];
+    
+    [appDelegate.tasksObjectsArray addObject:taskObject];
+    
+    NSLog(@"%@",[appDelegate.tasksObjectsArray objectAtIndex:[appDelegate.tasksObjectsArray count]-1]);
+    
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

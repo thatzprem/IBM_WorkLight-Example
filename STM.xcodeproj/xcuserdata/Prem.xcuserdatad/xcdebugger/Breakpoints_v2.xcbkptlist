@@ -41,29 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "STM/STMAddViewController/STMAddViewController.m"
-            timestampString = "405948678.230351"
+            filePath = "STM/STMDetailsViewController.m"
+            timestampString = "407872988.324644"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-buttonActionDone:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "STM/STMTableViewController.m"
-            timestampString = "405948323.889336"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "-buttonActionApprove:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

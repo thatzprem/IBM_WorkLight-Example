@@ -14,6 +14,5 @@
     UIBarButtonItem             *__barButtonAdd;
     UIBarButtonItem             *__barButtonEdit;
     UIBarButtonItem             *__barButtonDone;
-    
 }
 @end

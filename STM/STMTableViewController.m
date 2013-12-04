@@ -335,12 +335,8 @@ NSIndexPath *rowToDelete;
     
     
     AppDelegate *appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    NSLog(@"%@",[appDelegate.tasksObjectsArray objectAtIndex:indexPath.row]);
-    
 
-    
-    STMDetailsViewController *detailViewController = [[STMDetailsViewController alloc] initWithNibName:@"STMDetailsViewController" bundle:nil dictionary:[appDelegate.tasksObjectsArray objectAtIndex:indexPath.row]];
+    STMDetailsViewController *detailViewController = [[STMDetailsViewController alloc] initWithNibName:@"STMDetailsViewController" bundle:nil dictionary:[appDelegate.tasksObjectsArray objectAtIndex:indexPath.section] indexPath:indexPath.section];
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
