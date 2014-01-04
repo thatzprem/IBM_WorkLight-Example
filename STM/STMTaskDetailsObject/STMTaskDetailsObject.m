@@ -12,18 +12,18 @@
 
 static STMTaskDetailsObject *sharedInstance = nil;
 
-@synthesize taskName,taskDesc,startDate,endDate,owner,dependencies,progress,status;
+@synthesize taskName,taskDesc,startDate,endDate,owner,dependencies,taskProgress,status;
 
 
 - (void)initializeSharedInstance
 {
     self.taskName = [[NSString alloc]init];
     self.taskDesc = [[NSString alloc]init];
-    self.startDate = [[NSString alloc]init];
-    self.endDate = [[NSString alloc]init];
+    self.startDate = [[NSDate alloc]init];
+    self.endDate = [[NSDate alloc]init];
     self.owner = [[NSString alloc]init];
     self.dependencies = [[NSString alloc]init];
-    self.progress = [[NSString alloc]init];
+    self.taskProgress = [[NSNumber alloc]init];
     self.status = [[NSString alloc] init];
     
 }
@@ -50,7 +50,7 @@ static STMTaskDetailsObject *sharedInstance = nil;
     myClassInstanceCopy.endDate=[self.endDate copy];
     myClassInstanceCopy.owner = [self.owner copy];
     myClassInstanceCopy.dependencies=[self.dependencies copy];
-    myClassInstanceCopy.progress=[self.progress copy];
+    myClassInstanceCopy.taskProgress=[self.taskProgress copy];
 	
 	return myClassInstanceCopy;
 }

@@ -11,7 +11,7 @@
 
 
 @interface CustomCell : UITableViewCell<UITextFieldDelegate,UIActionSheetDelegate,UITextViewDelegate>{
-    UILabel *captionLabel;
+    
     UITextField *customTextField;
     UITextView *descriptionView;
 }

@@ -14,12 +14,13 @@
 }
 @property (nonatomic,strong)NSString *taskName;
 @property (nonatomic,strong)NSString *taskDesc;
-@property (nonatomic,strong)NSString *startDate;
-@property (nonatomic,strong)NSString *endDate;
+@property (nonatomic,strong)NSDate *startDate;
+@property (nonatomic,strong)NSDate *endDate;
 @property (nonatomic,strong)NSString *owner;
 @property (nonatomic,strong)NSString *dependencies;
-@property (nonatomic,strong)NSString *progress;
+@property (nonatomic,strong)NSNumber *taskProgress;
 @property (nonatomic,readwrite)NSString *status;
+@property (nonatomic,strong)NSNumber *recordID;
 
 
 + (STMTaskDetailsObject *)sharedInstance;

@@ -9,6 +9,8 @@
 #import "STMAddViewController.h"
 #import "STMTaskDetailsObject.h"
 #import "CustomCell.h"
+#import "DataAdapter.h"
+
 #define		ARRAY	[NSArray arrayWithObjects:@"Sears-Workbook",@"Complete the workbook along with Biswajit",@"12/12/2012", @"31/12/2012", @"Prem kumar", @"Biswajit", @"Chris Peri", nil]
 
 
@@ -77,14 +79,15 @@
     STMTaskDetailsObject *taskObject = [[STMTaskDetailsObject alloc] init];
     taskObject.taskName = [appDelegate.addDict objectForKey:@"taskName"];
     taskObject.taskDesc = [appDelegate.addDict objectForKey:@"description"];
-    taskObject.startDate = [appDelegate.addDict objectForKey:@"startDate"];
-    taskObject.endDate = [appDelegate.addDict objectForKey:@"endDate"];
+    taskObject.startDate = [NSDate date];
+    taskObject.endDate = [NSDate date];
     taskObject.owner = [appDelegate.addDict objectForKey:@"owner"];
     taskObject.dependencies = [appDelegate.addDict objectForKey:@"dependencies"];
-    taskObject.progress = [appDelegate.addDict objectForKey:@"progress"];
+    taskObject.taskProgress = [NSNumber numberWithInt:50];
     taskObject.status = [appDelegate.addDict objectForKey:@"status"];
     
-    [appDelegate.tasksObjectsArray addObject:taskObject];
+    [[DataAdapter getSharedInstance] saveDataToLocal:taskObject];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -105,29 +108,20 @@
 {
     if (section==0) {
         return @"";
-        
     }else
         return @"Description";
-
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    if (section==0) {
-        return 7;
-        
-    }else
-        return 1;
+    if (section==0) return 7;
+    else return 1;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section ==0) {
-        return 48;
-    }else //if (indexPath.section == 1){
-        return 80;
-    
-    
+    if (indexPath.section ==0) return 48;
+    else return 80;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -137,50 +131,8 @@
     if (cell == nil) {
         cell = [[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier indexPath:indexPath];
     }
-    
-    // Configure the cell...
     return cell;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 

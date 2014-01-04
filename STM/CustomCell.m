@@ -17,18 +17,6 @@
     if (self) {
         // Initialization code
         
-        if (indexPath.section==0) {
-            if (captionLabel == nil) {
-                captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 10.0, 125.0, 24.0)];
-                captionLabel.tag = 101;
-                //captionLabel.textAlignment=NSTextAlignmentCenter;
-                captionLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
-                
-                [self.contentView addSubview:captionLabel];
-            }
-
-        }
-        
          [self modifyCell:self forIndexPath:indexPath];
     }
     return self;
@@ -36,8 +24,17 @@
 
 - (void) modifyCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath{
 
-    if (indexPath.section ==0) {
+    UILabel *captionLabel;
+
+    if (indexPath.section == 0) {
         
+        if (captionLabel == nil) {
+            captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 10.0, 125.0, 24.0)];
+            captionLabel.tag = 101;
+            captionLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
+            [self.contentView addSubview:captionLabel];
+        }
+
         if (indexPath.row == 0)
         {
             captionLabel.text = NSLocalizedString(@"taskname", @"taskname");
@@ -83,9 +80,8 @@
         [self.contentView addSubview:customTextField];
 
     }
-    else if (indexPath.section==1 && indexPath.row==0)
+    else if (indexPath.section == 1 && indexPath.row == 0)
     {
-       // captionLabel.text = NSLocalizedString(@"description", @"description");
         [captionLabel removeFromSuperview];
         
         descriptionView=[[UITextView alloc]initWithFrame:CGRectMake(10.0, 12.0, 300.0, 60.0)];
@@ -153,9 +149,7 @@
         
         actionSheet.delegate = self;
         [actionSheet showInView:self];
-        
     }
-    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -169,16 +163,12 @@
     else if (buttonIndex == 2){
         customTextField.text = @"WaitingApproval";
     }
-
     
     AppDelegate *del=(AppDelegate *)[UIApplication sharedApplication].delegate;
     NSLog(@"customTextField.placeholder=%@ val=%@",customTextField.placeholder,customTextField.text);
-
     [del.addDict setObject:customTextField.text forKey:customTextField.placeholder];
-
-    
 }
-#pragma mark -
+
 #pragma mark UITextFieldDelegate Methods
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
@@ -217,41 +207,55 @@
     [txtView resignFirstResponder];
     return NO;
 }
-#pragma mark -
 
 -(void)assignDataToValues:(STMTaskDetailsObject *)taskDict forIndexPath:(NSIndexPath *)indexpath{
     
     if (indexpath.section==0) {
+        
         switch (indexpath.row) {
             case 0:
-                customTextField.text= taskDict.taskName;
+                if (![taskDict.taskName isEqual:[NSNull null]]) {
+                    customTextField.text = taskDict.taskName;
+                }
                 break;
             case 1:
-                customTextField.text=taskDict.startDate;
+                if (![taskDict.startDate isEqual:[NSNull null]]) {
+                customTextField.text = [NSString stringWithFormat:@"%@",taskDict.startDate];
+                }
                 break;
             case 2:
-                customTextField.text=taskDict.endDate;
+                if (![taskDict.endDate isEqual:[NSNull null]]) {
+                customTextField.text = [NSString stringWithFormat:@"%@",taskDict.endDate];
+                }
                 break;
             case 3:
-                customTextField.text=taskDict.owner;
+                if (![taskDict.owner isEqual:[NSNull null]] ) {
+                customTextField.text = taskDict.owner;
+                }
                 break;
             case 4:
-                customTextField.text=taskDict.dependencies;
+                if (![taskDict.dependencies isEqual:[NSNull null]] ) {
+                customTextField.text = taskDict.dependencies;
+                }
                 break;
             case 5:
-                customTextField.text=taskDict.progress;
+                if (![taskDict.taskProgress isEqual:[NSNull null]]) {
+                customTextField.text = [NSString stringWithFormat:@"%@",taskDict.taskProgress];
+                }
                 break;
             case 6:
-                customTextField.text=taskDict.status;
+                if (![taskDict.status isEqual:[NSNull null]]) {
+                customTextField.text = taskDict.status;
+                }
                 break;
             default:
                 break;
         }
     }
-    else if(indexpath.section==1){
+    else if(indexpath.section == 1){
         
-        if (descriptionView) {
-            descriptionView.text= taskDict.taskDesc;
+        if (![self isObjectEmpty:taskDict.taskDesc]) {
+//            descriptionView.text = taskDict.taskDesc;
         }
     }
 }
@@ -261,4 +265,10 @@
     
     // Configure the view for the selected state
 }
+
+-(BOOL)isObjectEmpty:(id)object
+{
+    return object == nil || ([object respondsToSelector:@selector(length)] && [(NSData *)object length] == 0) || ([object respondsToSelector:@selector(count)] && [(NSArray *)object count] == 0);
+}
+
 @end

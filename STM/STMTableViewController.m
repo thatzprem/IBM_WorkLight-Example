@@ -82,14 +82,51 @@ NSIndexPath *rowToDelete;
         self.navigationItem.leftBarButtonItem = self.barButtonEdit;
     }
     self.navigationItem.rightBarButtonItem = self.barButtonAdd;
+
+    //Update data from DB
+    NSMutableArray *coreDataObject = [[NSMutableArray alloc] init];
+    coreDataObject = [[DataAdapter getSharedInstance] getAllFromLocal];
+    for (id obj in coreDataObject) {
+        [appDelegate.tasksObjectsArray addObject:[self convertDictionaryToObject:obj]];
+    }
+    
     [self.tableView reloadData];
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 -(void)viewWillAppear:(BOOL)animated{
-    [self configureView];
     
+    //Clear the array
+    AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
+    [appDelegate.tasksObjectsArray removeAllObjects];
+    
+    //Fetch new reco[9]	__NSDictionaryM *	9 key/value pairs	0x08a943f0rd set from DB and update the array.
+    NSMutableArray *coreDataObject = [[NSMutableArray alloc] init];
+    coreDataObject = [[DataAdapter getSharedInstance] getAllFromLocal];
+    for (id obj in coreDataObject) {
+        [appDelegate.tasksObjectsArray addObject:[self convertDictionaryToObject:obj]];
+    }
+    
+    //Reload new data set.
+    [self configureView];
+}
+
+-(STMTaskDetailsObject *)convertDictionaryToObject:(NSDictionary *)dict{
+    
+    STMTaskDetailsObject *taskObject = [[STMTaskDetailsObject alloc] init];
+
+    taskObject.taskName = [dict objectForKey:@"taskName"];
+    taskObject.taskDesc = [dict objectForKey:@"taskDesc"];
+    taskObject.startDate = [dict objectForKey:@"startDate"];
+    taskObject.endDate = [dict objectForKey:@"endDate"];
+    taskObject.owner = [dict objectForKey:@"owner"];
+    taskObject.dependencies = [dict objectForKey:@"dependency"];
+    taskObject.taskProgress = [dict objectForKey:@"progress"];
+    taskObject.status = [dict objectForKey:@"status"];
+    taskObject.recordID = [dict objectForKey:@"recordID"];
+
+    return taskObject;
 }
 
 - (void)configureView{
@@ -145,16 +182,14 @@ NSIndexPath *rowToDelete;
     
     NSLog(@"indexPath.section = %d", indexPath.section);
     AppDelegate *appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
-
+    
     if (appDelegate.tasksObjectsArray) {
 
-        STMTaskDetailsObject *taskObject = (STMTaskDetailsObject*)[appDelegate.tasksObjectsArray objectAtIndex:indexPath.section];
-        cell.labelTaskName.text = taskObject.taskName;
-        cell.labelTaskDesc.text = taskObject.taskDesc;
-        cell.labelTaskProgress.text = taskObject.progress;
-        cell.labelTaskDueDate.text = taskObject.startDate;
+        STMTaskDetailsObject *taskObjectDictionary = (STMTaskDetailsObject*)[appDelegate.tasksObjectsArray objectAtIndex:indexPath.section];
+        cell.labelTaskName.text = taskObjectDictionary.taskName;
 
-        returnedImagesArray = [self getImageForStatus:taskObject.status Row:indexPath.row];
+        NSLog(@"%@",taskObjectDictionary.status);
+        returnedImagesArray = [self getImageForStatus:taskObjectDictionary.status Row:indexPath.section];
     }
 
     if (returnedImagesArray) {
@@ -170,6 +205,9 @@ NSIndexPath *rowToDelete;
 
 -(NSMutableDictionary *)getImageForStatus:(NSString*)statusString Row:(int)row{
     
+    if ([statusString isEqual:[NSNull null]]) {
+        statusString  = @"Pending";
+    }
     UIImage *badgeImage = nil;
     UIImage *bgImage = nil;
     UIImage *disclosureImage;
@@ -266,25 +304,24 @@ NSIndexPath *rowToDelete;
     
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"All the data related to this Task will get deleted." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
     [alertView show];
-    
-	
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     if (buttonIndex == 0) {
-        
         NSLog(@"Delete row action cancelled");
-        
     }
     else if (buttonIndex == 1){
         
         AppDelegate *appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
-        NSLog(@"%d",[appDelegate.tasksObjectsArray count]);
-        NSLog(@"%d",rowToDelete.row);
+        NSLog(@"Records count: %d",[appDelegate.tasksObjectsArray count]);
+        
+        STMTaskDetailsObject *taskObject = [appDelegate.tasksObjectsArray objectAtIndex:rowToDelete.row];
+        NSLog(@"Row to delete:%d with recordID: %d",rowToDelete.row,[taskObject.recordID intValue]);
+
         [appDelegate.tasksObjectsArray removeObjectAtIndex:rowToDelete.row];
+        [[DataAdapter getSharedInstance] deleteLocalByRecordID:taskObject.recordID];
     }
-    
     [self.tableView reloadData];
 }
 
@@ -335,6 +372,8 @@ NSIndexPath *rowToDelete;
     
     
     AppDelegate *appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSLog(@"%@",[appDelegate.tasksObjectsArray objectAtIndex:indexPath.section]);
 
     STMDetailsViewController *detailViewController = [[STMDetailsViewController alloc] initWithNibName:@"STMDetailsViewController" bundle:nil dictionary:[appDelegate.tasksObjectsArray objectAtIndex:indexPath.section] indexPath:indexPath.section];
      // ...

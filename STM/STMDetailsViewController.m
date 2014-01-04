@@ -83,16 +83,15 @@
     self.navigationItem.leftBarButtonItem=nil;
 }
 
-
-
 -(void)buttonActionApprove:(id)sender{
     
-    NSMutableDictionary *updatedTask = [NSMutableDictionary dictionaryWithDictionary:self.localDictionary];
-    [updatedTask setObject:@"Pending" forKey:@"status"];
-    self.localDictionary = updatedTask;
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Task status changed to approved!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    [alertView show];
-    self.navigationItem.rightBarButtonItem = self.barButtonDone;
+//    NSMutableDictionary *updatedTask = [NSMutableDictionary dictionaryWithDictionary:self.localDictionary];
+//    [updatedTask setObject:@"Pending" forKey:@"status"];
+//    self.localDictionary = updatedTask;
+//    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Task status changed to approved!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+//    [alertView show];
+//    self.navigationItem.rightBarButtonItem = self.barButtonDone;
+    
 }
 
 -(void)buttonActionDone:(id)sender
@@ -114,13 +113,12 @@
     taskObject.endDate = [appDelegate.addDict objectForKey:@"endDate"];
     taskObject.owner = [appDelegate.addDict objectForKey:@"owner"];
     taskObject.dependencies = [appDelegate.addDict objectForKey:@"dependencies"];
-    taskObject.progress = [appDelegate.addDict objectForKey:@"progress"];
+    taskObject.taskProgress = [appDelegate.addDict objectForKey:@"progress"];
     taskObject.status = [appDelegate.addDict objectForKey:@"status"];
     
     [appDelegate.tasksObjectsArray addObject:taskObject];
     
     NSLog(@"%@",[appDelegate.tasksObjectsArray objectAtIndex:[appDelegate.tasksObjectsArray count]-1]);
-    
     
     [self.navigationController popViewControllerAnimated:YES];
 }

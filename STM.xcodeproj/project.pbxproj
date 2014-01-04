@@ -41,6 +41,16 @@
 		3B5305E01692FD4C00A5F604 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5305DF1692FD4C00A5F604 /* Security.framework */; };
 		3B5305E31692FD5500A5F604 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5305E21692FD5500A5F604 /* CFNetwork.framework */; };
 		3B5305E51692FD6600A5F604 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5305E41692FD6600A5F604 /* libicucore.dylib */; };
+		3B5A27C11852C7720061E712 /* libCoreDataClientRelease.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5A27BE1852C7720061E712 /* libCoreDataClientRelease.a */; };
+		3B5A27C21852C7720061E712 /* CoreDataConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B5A27C01852C7720061E712 /* CoreDataConfig.plist */; };
+		3B5A27C51852C78E0061E712 /* STM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B5A27C31852C78E0061E712 /* STM.xcdatamodeld */; };
+		3B5A27CB1852C8D00061E712 /* DataAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5A27CA1852C8D00061E712 /* DataAdapter.m */; };
+		3B5A27CE1852C9FD0061E712 /* DATA_TABLE.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5A27CD1852C9FD0061E712 /* DATA_TABLE.m */; };
+		3B5A27D11852CAC50061E712 /* RequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5A27D01852CAC50061E712 /* RequestObject.m */; };
+		3B5A27D41852CAD40061E712 /* ResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5A27D31852CAD40061E712 /* ResponseObject.m */; };
+		3B5A27D71852D0AC0061E712 /* libHMLoggerDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5A27D61852D0AC0061E712 /* libHMLoggerDebug.a */; };
+		3B5A27DA1852D0EA0061E712 /* LoggerConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B5A27D91852D0EA0061E712 /* LoggerConfig.plist */; };
+		3B5A27DC1852D1100061E712 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5A27DB1852D1100061E712 /* CoreData.framework */; };
 		3B7172AD168F4F3D0035A85A /* STMAdminSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7172AB168F4F3D0035A85A /* STMAdminSettingsViewController.m */; };
 		3B7172AE168F4F3D0035A85A /* STMAdminSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B7172AC168F4F3D0035A85A /* STMAdminSettingsViewController.xib */; };
 		3B7172B7168F538E0035A85A /* STMManagePeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7172B5168F538E0035A85A /* STMManagePeopleViewController.m */; };
@@ -134,35 +144,24 @@
 		3B5305DF1692FD4C00A5F604 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3B5305E21692FD5500A5F604 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3B5305E41692FD6600A5F604 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		3B64A42F169301CC00D87E3C /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
-		3B64A430169301CC00D87E3C /* KZADFSIdentityProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZADFSIdentityProvider.h; sourceTree = "<group>"; };
-		3B64A431169301CC00D87E3C /* KZApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZApplication.h; sourceTree = "<group>"; };
-		3B64A432169301CC00D87E3C /* KZAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZAuthentication.h; sourceTree = "<group>"; };
-		3B64A433169301CC00D87E3C /* KZConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZConfiguration.h; sourceTree = "<group>"; };
-		3B64A434169301CC00D87E3C /* KZConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZConstants.h; sourceTree = "<group>"; };
-		3B64A435169301CC00D87E3C /* KZFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZFileManager.h; sourceTree = "<group>"; };
-		3B64A436169301CC00D87E3C /* KZHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZHTTPClient.h; sourceTree = "<group>"; };
-		3B64A437169301CC00D87E3C /* KZHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZHTTPRequest.h; sourceTree = "<group>"; };
-		3B64A438169301CC00D87E3C /* KZIdentityProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZIdentityProvider.h; sourceTree = "<group>"; };
-		3B64A439169301CC00D87E3C /* KZIdentityProviderFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZIdentityProviderFactory.h; sourceTree = "<group>"; };
-		3B64A43A169301CC00D87E3C /* KZLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZLogging.h; sourceTree = "<group>"; };
-		3B64A43B169301CC00D87E3C /* KZMail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZMail.h; sourceTree = "<group>"; };
-		3B64A43C169301CC00D87E3C /* KZNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZNotification.h; sourceTree = "<group>"; };
-		3B64A43D169301CC00D87E3C /* KZPubSubChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZPubSubChannel.h; sourceTree = "<group>"; };
-		3B64A43E169301CC00D87E3C /* KZQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZQueue.h; sourceTree = "<group>"; };
-		3B64A43F169301CC00D87E3C /* KZResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZResponse.h; sourceTree = "<group>"; };
-		3B64A440169301CC00D87E3C /* KZService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZService.h; sourceTree = "<group>"; };
-		3B64A441169301CC00D87E3C /* KZSMSSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZSMSSender.h; sourceTree = "<group>"; };
-		3B64A442169301CC00D87E3C /* KZStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZStorage.h; sourceTree = "<group>"; };
-		3B64A443169301CC00D87E3C /* KZStorageMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZStorageMetadata.h; sourceTree = "<group>"; };
-		3B64A444169301CC00D87E3C /* KZUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZUser.h; sourceTree = "<group>"; };
-		3B64A445169301CC00D87E3C /* KZWRAPv09IdentityProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZWRAPv09IdentityProvider.h; sourceTree = "<group>"; };
-		3B64A446169301CC00D87E3C /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
-		3B64A447169301CC00D87E3C /* NSDictionary+JSONCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONCategories.h"; sourceTree = "<group>"; };
-		3B64A448169301CC00D87E3C /* NSString+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utilities.h"; sourceTree = "<group>"; };
-		3B64A449169301CC00D87E3C /* Query.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Query.h; sourceTree = "<group>"; };
-		3B64A44A169301CC00D87E3C /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
-		3B64A44B169301CC00D87E3C /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		3B5A27BC1852C7720061E712 /* CoreDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataRequest.h; sourceTree = "<group>"; };
+		3B5A27BD1852C7720061E712 /* CoreDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataResponse.h; sourceTree = "<group>"; };
+		3B5A27BE1852C7720061E712 /* libCoreDataClientRelease.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCoreDataClientRelease.a; sourceTree = "<group>"; };
+		3B5A27BF1852C7720061E712 /* CoreDataContextManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataContextManager.h; sourceTree = "<group>"; };
+		3B5A27C01852C7720061E712 /* CoreDataConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CoreDataConfig.plist; sourceTree = "<group>"; };
+		3B5A27C41852C78E0061E712 /* STM.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = STM.xcdatamodel; sourceTree = "<group>"; };
+		3B5A27C91852C8D00061E712 /* DataAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataAdapter.h; path = DataAdapter/DataAdapter.h; sourceTree = "<group>"; };
+		3B5A27CA1852C8D00061E712 /* DataAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataAdapter.m; path = DataAdapter/DataAdapter.m; sourceTree = "<group>"; };
+		3B5A27CC1852C9FD0061E712 /* DATA_TABLE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DATA_TABLE.h; path = DataAdapter/DATA_TABLE.h; sourceTree = "<group>"; };
+		3B5A27CD1852C9FD0061E712 /* DATA_TABLE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DATA_TABLE.m; path = DataAdapter/DATA_TABLE.m; sourceTree = "<group>"; };
+		3B5A27CF1852CAC50061E712 /* RequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestObject.h; sourceTree = "<group>"; };
+		3B5A27D01852CAC50061E712 /* RequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestObject.m; sourceTree = "<group>"; };
+		3B5A27D21852CAD40061E712 /* ResponseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseObject.h; sourceTree = "<group>"; };
+		3B5A27D31852CAD40061E712 /* ResponseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseObject.m; sourceTree = "<group>"; };
+		3B5A27D61852D0AC0061E712 /* libHMLoggerDebug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHMLoggerDebug.a; sourceTree = "<group>"; };
+		3B5A27D81852D0DC0061E712 /* HMLogManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMLogManager.h; sourceTree = "<group>"; };
+		3B5A27D91852D0EA0061E712 /* LoggerConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LoggerConfig.plist; sourceTree = "<group>"; };
+		3B5A27DB1852D1100061E712 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3B7172AA168F4F3D0035A85A /* STMAdminSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMAdminSettingsViewController.h; path = STMAdminSettingsViewController/STMAdminSettingsViewController.h; sourceTree = "<group>"; };
 		3B7172AB168F4F3D0035A85A /* STMAdminSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMAdminSettingsViewController.m; path = STMAdminSettingsViewController/STMAdminSettingsViewController.m; sourceTree = "<group>"; };
 		3B7172AC168F4F3D0035A85A /* STMAdminSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STMAdminSettingsViewController.xib; path = STMAdminSettingsViewController/STMAdminSettingsViewController.xib; sourceTree = "<group>"; };
@@ -171,7 +170,6 @@
 		3B7172B6168F538E0035A85A /* STMManagePeopleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STMManagePeopleViewController.xib; path = STMManagePeopleViewController/STMManagePeopleViewController.xib; sourceTree = "<group>"; };
 		3B7295571695670A00337A16 /* STMTaskDetailsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMTaskDetailsObject.h; path = STMTaskDetailsObject/STMTaskDetailsObject.h; sourceTree = "<group>"; };
 		3B7295581695670A00337A16 /* STMTaskDetailsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMTaskDetailsObject.m; path = STMTaskDetailsObject/STMTaskDetailsObject.m; sourceTree = "<group>"; };
-		3B72956F169598EC00337A16 /* libkidozen.client.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libkidozen.client.a; sourceTree = "<group>"; };
 		3B78613B169DB21D0074E805 /* goal_cell_bg_yellow_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goal_cell_bg_yellow_bottom.png; sourceTree = "<group>"; };
 		3B78613C169DB21D0074E805 /* goal_cell_bg_yellow_middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goal_cell_bg_yellow_middle.png; sourceTree = "<group>"; };
 		3B78613D169DB21D0074E805 /* goal_cell_bg_yellow_single.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goal_cell_bg_yellow_single.png; sourceTree = "<group>"; };
@@ -230,12 +228,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B5A27DC1852D1100061E712 /* CoreData.framework in Frameworks */,
 				3B5305E51692FD6600A5F604 /* libicucore.dylib in Frameworks */,
 				3B5305E31692FD5500A5F604 /* CFNetwork.framework in Frameworks */,
 				3B5305E01692FD4C00A5F604 /* Security.framework in Frameworks */,
 				3B52F73C168AE8BB00B03B0C /* UIKit.framework in Frameworks */,
+				3B5A27D71852D0AC0061E712 /* libHMLoggerDebug.a in Frameworks */,
 				3B52F73E168AE8BB00B03B0C /* Foundation.framework in Frameworks */,
 				3B52F740168AE8BB00B03B0C /* CoreGraphics.framework in Frameworks */,
+				3B5A27C11852C7720061E712 /* libCoreDataClientRelease.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				3B52F741168AE8BB00B03B0C /* STM */,
+				3B52F742168AE8BB00B03B0C /* Supporting Files */,
 				3B52F73A168AE8BB00B03B0C /* Frameworks */,
 				3B52F738168AE8BB00B03B0C /* Products */,
 			);
@@ -333,7 +335,7 @@
 		3B52F73A168AE8BB00B03B0C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3B64A42D169301CC00D87E3C /* kido-ios-lib */,
+				3B5A27DB1852D1100061E712 /* CoreData.framework */,
 				3B5305E41692FD6600A5F604 /* libicucore.dylib */,
 				3B5305E21692FD5500A5F604 /* CFNetwork.framework */,
 				3B5305DF1692FD4C00A5F604 /* Security.framework */,
@@ -347,14 +349,14 @@
 		3B52F741168AE8BB00B03B0C /* STM */ = {
 			isa = PBXGroup;
 			children = (
+				3B5A27C81852C8140061E712 /* ViewControllers */,
+				3B5A27C71852C8020061E712 /* DataControllers */,
+				3B5A27C61852C7E70061E712 /* Models */,
+				3B5A27BB1852C7520061E712 /* CoreDataLibrary */,
 				3B4A9658169AAFCA00DB9393 /* AppDelegate.h */,
 				3B4A9659169AAFCA00DB9393 /* AppDelegate.m */,
-				3B729556169566CE00337A16 /* Utilities */,
 				3BF01236168AEBA200DA1C12 /* Resources */,
-				3B300EB1168EFF3C00530B2E /* User-Controllers */,
-				3B300EB0168EFF3200530B2E /* Admin-Controllers */,
-				3BD497C81696FB9D00473716 /* HomeViewController */,
-				3B52F742168AE8BB00B03B0C /* Supporting Files */,
+				3B729556169566CE00337A16 /* Utilities */,
 			);
 			path = STM;
 			sourceTree = "<group>";
@@ -372,51 +374,64 @@
 				3B52F751168AE8BB00B03B0C /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			path = STM;
 			sourceTree = "<group>";
 		};
-		3B64A42D169301CC00D87E3C /* kido-ios-lib */ = {
+		3B5A27BB1852C7520061E712 /* CoreDataLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				3B64A42E169301CC00D87E3C /* include */,
-				3B72956F169598EC00337A16 /* libkidozen.client.a */,
+				3B5A27BC1852C7720061E712 /* CoreDataRequest.h */,
+				3B5A27BD1852C7720061E712 /* CoreDataResponse.h */,
+				3B5A27BE1852C7720061E712 /* libCoreDataClientRelease.a */,
+				3B5A27BF1852C7720061E712 /* CoreDataContextManager.h */,
+				3B5A27C01852C7720061E712 /* CoreDataConfig.plist */,
+				3B5A27C31852C78E0061E712 /* STM.xcdatamodeld */,
 			);
-			path = "kido-ios-lib";
+			name = CoreDataLibrary;
 			sourceTree = "<group>";
 		};
-		3B64A42E169301CC00D87E3C /* include */ = {
+		3B5A27C61852C7E70061E712 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3B64A42F169301CC00D87E3C /* base64.h */,
-				3B64A430169301CC00D87E3C /* KZADFSIdentityProvider.h */,
-				3B64A431169301CC00D87E3C /* KZApplication.h */,
-				3B64A432169301CC00D87E3C /* KZAuthentication.h */,
-				3B64A433169301CC00D87E3C /* KZConfiguration.h */,
-				3B64A434169301CC00D87E3C /* KZConstants.h */,
-				3B64A435169301CC00D87E3C /* KZFileManager.h */,
-				3B64A436169301CC00D87E3C /* KZHTTPClient.h */,
-				3B64A437169301CC00D87E3C /* KZHTTPRequest.h */,
-				3B64A438169301CC00D87E3C /* KZIdentityProvider.h */,
-				3B64A439169301CC00D87E3C /* KZIdentityProviderFactory.h */,
-				3B64A43A169301CC00D87E3C /* KZLogging.h */,
-				3B64A43B169301CC00D87E3C /* KZMail.h */,
-				3B64A43C169301CC00D87E3C /* KZNotification.h */,
-				3B64A43D169301CC00D87E3C /* KZPubSubChannel.h */,
-				3B64A43E169301CC00D87E3C /* KZQueue.h */,
-				3B64A43F169301CC00D87E3C /* KZResponse.h */,
-				3B64A440169301CC00D87E3C /* KZService.h */,
-				3B64A441169301CC00D87E3C /* KZSMSSender.h */,
-				3B64A442169301CC00D87E3C /* KZStorage.h */,
-				3B64A443169301CC00D87E3C /* KZStorageMetadata.h */,
-				3B64A444169301CC00D87E3C /* KZUser.h */,
-				3B64A445169301CC00D87E3C /* KZWRAPv09IdentityProvider.h */,
-				3B64A446169301CC00D87E3C /* NSData+SRB64Additions.h */,
-				3B64A447169301CC00D87E3C /* NSDictionary+JSONCategories.h */,
-				3B64A448169301CC00D87E3C /* NSString+Utilities.h */,
-				3B64A449169301CC00D87E3C /* Query.h */,
-				3B64A44A169301CC00D87E3C /* SocketRocket-Prefix.pch */,
-				3B64A44B169301CC00D87E3C /* SRWebSocket.h */,
+				3B7295571695670A00337A16 /* STMTaskDetailsObject.h */,
+				3B7295581695670A00337A16 /* STMTaskDetailsObject.m */,
+				3B5A27CC1852C9FD0061E712 /* DATA_TABLE.h */,
+				3B5A27CD1852C9FD0061E712 /* DATA_TABLE.m */,
+				3B5A27CF1852CAC50061E712 /* RequestObject.h */,
+				3B5A27D01852CAC50061E712 /* RequestObject.m */,
+				3B5A27D21852CAD40061E712 /* ResponseObject.h */,
+				3B5A27D31852CAD40061E712 /* ResponseObject.m */,
 			);
-			path = include;
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3B5A27C71852C8020061E712 /* DataControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3B5A27C91852C8D00061E712 /* DataAdapter.h */,
+				3B5A27CA1852C8D00061E712 /* DataAdapter.m */,
+			);
+			name = DataControllers;
+			sourceTree = "<group>";
+		};
+		3B5A27C81852C8140061E712 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3B300EB1168EFF3C00530B2E /* User-Controllers */,
+				3B300EB0168EFF3200530B2E /* Admin-Controllers */,
+				3BD497C81696FB9D00473716 /* HomeViewController */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3B5A27D51852D0930061E712 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				3B5A27D91852D0EA0061E712 /* LoggerConfig.plist */,
+				3B5A27D81852D0DC0061E712 /* HMLogManager.h */,
+				3B5A27D61852D0AC0061E712 /* libHMLoggerDebug.a */,
+			);
+			name = Logger;
 			sourceTree = "<group>";
 		};
 		3B7172A8168F4EBD0035A85A /* ThirdViewController */ = {
@@ -444,7 +459,6 @@
 			isa = PBXGroup;
 			children = (
 				3BD497C71696FB8700473716 /* MBProgressHUD */,
-				3BD497C61696FB6600473716 /* SingletonTaskDetailsObject */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -456,15 +470,6 @@
 				53A2BBB41696B63400C38603 /* CustomCell.m */,
 			);
 			name = CustomTableCell;
-			sourceTree = "<group>";
-		};
-		3BD497C61696FB6600473716 /* SingletonTaskDetailsObject */ = {
-			isa = PBXGroup;
-			children = (
-				3B7295571695670A00337A16 /* STMTaskDetailsObject.h */,
-				3B7295581695670A00337A16 /* STMTaskDetailsObject.m */,
-			);
-			name = SingletonTaskDetailsObject;
 			sourceTree = "<group>";
 		};
 		3BD497C71696FB8700473716 /* MBProgressHUD */ = {
@@ -536,6 +541,7 @@
 		3BF01236168AEBA200DA1C12 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3B5A27D51852D0930061E712 /* Logger */,
 				3BF48276168B0E89002D7A55 /* Goal */,
 				3BF01237168AEBAA00DA1C12 /* Images */,
 			);
@@ -695,6 +701,7 @@
 				3B52F746168AE8BB00B03B0C /* InfoPlist.strings in Resources */,
 				3B52F74E168AE8BB00B03B0C /* Default.png in Resources */,
 				3B52F750168AE8BB00B03B0C /* Default@2x.png in Resources */,
+				3B5A27DA1852D0EA0061E712 /* LoggerConfig.plist in Resources */,
 				3B52F752168AE8BB00B03B0C /* Default-568h@2x.png in Resources */,
 				3B52F757168AE8BB00B03B0C /* first.png in Resources */,
 				3B52F759168AE8BB00B03B0C /* first@2x.png in Resources */,
@@ -731,6 +738,7 @@
 				3BAE412A169D682E00966CC8 /* goal_overdue_top.png in Resources */,
 				3BAE412B169D682E00966CC8 /* goal_overdue_bottom.png in Resources */,
 				3BAE412E169D6A6400966CC8 /* goal_paid_bottom.png in Resources */,
+				3B5A27C21852C7720061E712 /* CoreDataConfig.plist in Resources */,
 				3BAE412F169D6A6400966CC8 /* goal_paid_top.png in Resources */,
 				3B78613F169DB21D0074E805 /* goal_cell_bg_yellow_bottom.png in Resources */,
 				3B786140169DB21D0074E805 /* goal_cell_bg_yellow_middle.png in Resources */,
@@ -762,7 +770,9 @@
 				3B52F748168AE8BB00B03B0C /* main.m in Sources */,
 				3B52F75C168AE8BB00B03B0C /* SecondViewController.m in Sources */,
 				3BF01247168AF0CE00DA1C12 /* STMTableViewController.m in Sources */,
+				3B5A27CB1852C8D00061E712 /* DataAdapter.m in Sources */,
 				3BF01250168AFB1700DA1C12 /* STMAddViewController.m in Sources */,
+				3B5A27CE1852C9FD0061E712 /* DATA_TABLE.m in Sources */,
 				3BF48272168B0493002D7A55 /* STMTaskTableViewCell.m in Sources */,
 				3BF48296168B1E83002D7A55 /* STMDetailsViewController.m in Sources */,
 				3BDD1436168B607900E83244 /* ThirdViewController.m in Sources */,
@@ -772,9 +782,12 @@
 				3B7172B7168F538E0035A85A /* STMManagePeopleViewController.m in Sources */,
 				3B7295591695670A00337A16 /* STMTaskDetailsObject.m in Sources */,
 				5399D0391695983200C35E75 /* MainViewController.m in Sources */,
+				3B5A27D41852CAD40061E712 /* ResponseObject.m in Sources */,
 				5399D0461695A31500C35E75 /* MBProgressHUD.m in Sources */,
+				3B5A27D11852CAC50061E712 /* RequestObject.m in Sources */,
 				53A2BBB51696B63400C38603 /* CustomCell.m in Sources */,
 				3B4A965A169AAFCA00DB9393 /* AppDelegate.m in Sources */,
+				3B5A27C51852C78E0061E712 /* STM.xcdatamodeld in Sources */,
 				5397F2E6169D38BD0051A8AC /* CustomSettingsCell.m in Sources */,
 				3B46E759169EB83800E126E5 /* STMPreviewViewController.m in Sources */,
 			);
@@ -811,7 +824,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Happiest Minds Technologies Private Limited";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Happiest Minds Technologies Private Limited";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -828,6 +842,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = /Users/Prem/Desktop/STM;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "339B79A1-E867-4E1D-84FA-F1712208D293";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -841,7 +856,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Happiest Minds Technologies Private Limited";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Happiest Minds Technologies Private Limited";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -851,6 +867,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = /Users/Prem/Desktop/STM;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "339B79A1-E867-4E1D-84FA-F1712208D293";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -859,21 +876,23 @@
 		3B52F76A168AE8BB00B03B0C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Prem Kumar (6MT23LF92C)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Prem Kumar (6MT23LF92C)";
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Happiest Minds Technologies Private Limited";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Happiest Minds Technologies Private Limited";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "STM/STM-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/\"";
 				INFOPLIST_FILE = "STM/STM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/kido-ios-lib\"",
+					"$(SRCROOT)",
+					"\\\"$(SRCROOT)/kido-ios-lib\\\"",
+					"/Volumes/Project-Workspace/github/IBM_WorkLight-Example/STM",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F9CA3C4E-9B45-4447-ABC4-6D7C715F1557";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9CA3C4E-9B45-4447-ABC4-6D7C715F1557";
+				PROVISIONING_PROFILE = "339B79A1-E867-4E1D-84FA-F1712208D293";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "339B79A1-E867-4E1D-84FA-F1712208D293";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -882,21 +901,23 @@
 		3B52F76B168AE8BB00B03B0C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Prem Kumar (6MT23LF92C)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Prem Kumar (6MT23LF92C)";
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Happiest Minds Technologies Private Limited";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Happiest Minds Technologies Private Limited";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "STM/STM-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/\"";
 				INFOPLIST_FILE = "STM/STM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/kido-ios-lib\"",
+					"$(SRCROOT)",
+					"\\\"$(SRCROOT)/kido-ios-lib\\\"",
+					"/Volumes/Project-Workspace/github/IBM_WorkLight-Example/STM",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F9CA3C4E-9B45-4447-ABC4-6D7C715F1557";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9CA3C4E-9B45-4447-ABC4-6D7C715F1557";
+				PROVISIONING_PROFILE = "339B79A1-E867-4E1D-84FA-F1712208D293";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "339B79A1-E867-4E1D-84FA-F1712208D293";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -924,6 +945,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3B5A27C31852C78E0061E712 /* STM.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3B5A27C41852C78E0061E712 /* STM.xcdatamodel */,
+			);
+			currentVersion = 3B5A27C41852C78E0061E712 /* STM.xcdatamodel */;
+			path = STM.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3B52F72E168AE8BB00B03B0C /* Project object */;
 }
